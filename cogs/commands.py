@@ -33,7 +33,7 @@ class BecCommands(commands.Cog):
         cancount = self.bot.config['cancount']+1
         self.bot.config['cancount'] = cancount
         self.bot.save_config()
-        await ctx.send("You place a can on Planet-Lumi. We are building a Land of Cans and Nightbot.  There's now %d cans.  Someone can add another in 35 seconds." % cancount)
+        await ctx.send("You place a can on Planet-Lumi. There's now %d cans.  Someone can add another in 35 seconds." % cancount)
 
     #hugs
     @commands.command(aliases = ['fight', 'Hug'])
