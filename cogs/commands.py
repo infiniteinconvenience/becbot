@@ -60,6 +60,33 @@ class BecCommands(commands.Cog):
             "GAMBLING? In MY good christian server???",
             ]
         await ctx.send(random.choice(responses))
+        
+     #generates random classpect!
+    @bot.command()
+    async def classpect(ctx):
+        classes = [
+        'Lord',
+        'Thief',
+        'Prince',
+        'Witch',
+        'Knight',
+        'Maid',
+        'Mage',]
+        aspects = [
+        'Breath',
+        'Life',
+        'Light',
+        'Time',
+        'Heart',
+        'Rage',
+        'Blood',
+        'Doom',
+        'Void',
+        'Space',
+        'Mind',
+        'Hope',
+        ]
+        await ctx.send(random.choice(classes) + ' of ' + random.choice(aspects)
 
     #F
     @commands.command(aliases = ['f'])
