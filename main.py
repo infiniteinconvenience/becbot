@@ -106,6 +106,9 @@ class Bot(commands.Bot):
         """
         if message.author.bot:
             return  # ignore all bots
+        
+        if message.guild is None:
+            return # ignore PMs
 
         await self.process_commands(message)
 
