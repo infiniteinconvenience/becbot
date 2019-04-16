@@ -13,19 +13,19 @@ class BecCommands(commands.Cog):
     async def happytime(self, ctx):
         utc_now = pytz.utc.localize(datetime.datetime.utcnow())
         EST_now = utc_now.astimezone(pytz.timezone('US/Eastern'))
-        await ctx.send('It is currently ' + EST_now.strftime("%H:%M:%S") + 'EST')
+        await ctx.send('It is currently ' + EST_now.strftime("%H:%M:%S") + ' EST')
 
     @commands.command()
     async def lumitime(self, ctx):
         utc_now = pytz.utc.localize(datetime.datetime.utcnow())
         cst_now = utc_now.astimezone(pytz.timezone('US/Central'))
-        await ctx.send('It is currently ' + cst_now.strftime("%H:%M:%S") + 'CST')
+        await ctx.send('It is currently ' + cst_now.strftime("%H:%M:%S") + ' CST')
 
     @commands.command()
     async def ventime(self, ctx):
         utc_now = pytz.utc.localize(datetime.datetime.utcnow())
         cet_now = utc_now.astimezone(pytz.timezone('Europe/Paris'))
-        await ctx.send('It is currently ' + cet_now.strftime("%H:%M:%S") + 'CET')
+        await ctx.send('It is currently ' + cet_now.strftime("%H:%M:%S") + ' CET')
 
     #!addcan
     @commands.command(aliases=['addbear','asscan'])
