@@ -67,9 +67,9 @@ class BecCommands(commands.Cog):
         await ctx.send(':regional_indicator_f:')
 
     #help
-    @commands.command()
-    async def help(self, ctx):
-        await ctx.send('https://www.youtube.com/watch?v=yD2FSwTy2lw')
+    #@commands.command()
+    #async def help(self, ctx):
+    #    await ctx.send('https://www.youtube.com/watch?v=yD2FSwTy2lw')
 
     #!Vengaming
     @commands.command()
