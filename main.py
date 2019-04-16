@@ -19,7 +19,7 @@ def config_load():
 
 def config_save(config):
     with open('data/config.json', 'w', encoding='utf-8-sig') as doc:
-        json.dump(doc, indent=9)
+        json.dump(config, doc, indent=9)
 
 async def run():
     """
