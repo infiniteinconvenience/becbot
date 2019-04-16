@@ -19,11 +19,11 @@ class BecAR(commands.Cog):
             await message.channel.send('turing')
             
         #F 
-        if message.content.lower().startswith('f'):
+        if message.content.lower().startswith('f ') or message.content.lower() == "f":
             await message.channel.send(':regional_indicator_f:')
            
         #^^
-        if message.content.startswith('^^'):
+        if message.content.startswith('^^ ') or message.content.lower() == "^^":
             await message.channel.send('^u^')
             
         #\o/
