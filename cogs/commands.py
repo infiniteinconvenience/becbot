@@ -33,7 +33,7 @@ class BecCommands(commands.Cog):
         cancount = self.bot.config['cancount']+1
         self.bot.config['cancount'] = cancount
         self.bot.save_config()
-        await ctx.send("You place a can on Planet-Lumi. We are building a Land of Cans and Nightbot.  There's now %d cans.  Someone can add another in 35 seconds." % cancount)
+        await ctx.send("You place a can on Planet-Lumi. There's now %d cans.  Someone can add another in 35 seconds." % cancount)
 
     #hugs
     @commands.command(aliases = ['fight', 'Hug'])
@@ -60,6 +60,41 @@ class BecCommands(commands.Cog):
             "GAMBLING? In MY good christian server???",
             ]
         await ctx.send(random.choice(responses))
+        
+     #generates random classpect!
+    @commands.command()
+    async def classpect(self, ctx):
+        classes = [
+        'Lord',
+        'Muse',
+        'Thief',
+        'Rogue',
+        'Prince',
+        'Bard',
+        'Witch',
+        'Heir',
+        'Knight',
+        'Page',
+        'Maid',
+        'Sylph',
+        'Mage',
+        'Seer',
+        ]
+        aspects = [
+        'Breath',
+        'Life',
+        'Light',
+        'Time',
+        'Heart',
+        'Rage',
+        'Blood',
+        'Doom',
+        'Void',
+        'Space',
+        'Mind',
+        'Hope',
+        ]
+        await ctx.send(random.choice(classes) + ' of ' + random.choice(aspects))
 
     #F
     @commands.command(aliases = ['f'])

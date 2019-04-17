@@ -4,3 +4,4 @@ Becbot! My first ever coding ANYTHING project
 
 > Uses discord.py (rewritten) and pytz libraries! 
 
+>Thanks cozy for hosting and making it run right!
