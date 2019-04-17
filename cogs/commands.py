@@ -63,7 +63,7 @@ class BecCommands(commands.Cog):
         
      #generates random classpect!
     @commands.command()
-    async def classpect(ctx):
+    async def classpect(self, ctx):
         classes = [
         'Lord',
         'Thief',
