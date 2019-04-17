@@ -66,12 +66,20 @@ class BecCommands(commands.Cog):
     async def classpect(self, ctx):
         classes = [
         'Lord',
+        'Muse',
         'Thief',
+        'Rogue',
         'Prince',
+        'Bard',
         'Witch',
+        'Heir',
         'Knight',
+        'Page',
         'Maid',
-        'Mage',]
+        'Sylph',
+        'Mage',
+        'Seer',
+        ]
         aspects = [
         'Breath',
         'Life',
@@ -86,7 +94,7 @@ class BecCommands(commands.Cog):
         'Mind',
         'Hope',
         ]
-        await ctx.send(random.choice(classes) + ' of ' + random.choice(aspects)
+        await ctx.send(random.choice(classes) + ' of ' + random.choice(aspects))
 
     #F
     @commands.command(aliases = ['f'])
