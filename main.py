@@ -7,6 +7,7 @@ import datetime
 import json
 import logging
 from pathlib import Path
+import random
 
 import discord
 from discord.ext import commands
@@ -30,6 +31,7 @@ async def run():
     config = config_load()
     bot = Bot(config=config,
               description=config['description'])
+    bot.remove_command('help')
     try:
         await bot.start(config['token'])
     except KeyboardInterrupt:
@@ -38,14 +40,16 @@ async def run():
 
 class Bot(commands.Bot):
     def __init__(self, **kwargs):
+        self.config = kwargs.pop('config')
+        line = random.choice(self.config["playing_lines"])
+        game = discord.Game(line)
         super().__init__(
             command_prefix=self.get_prefix_,
-            description=kwargs.pop('description')
+            description=kwargs.pop('description'),
+            activity=game
         )
         self.start_time = None
         self.app_info = None
-
-        self.config = kwargs.pop('config')
 
         self.loop.create_task(self.track_start())
         self.loop.create_task(self.load_all_extensions())
