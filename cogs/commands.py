@@ -62,7 +62,7 @@ class BecCommands(commands.Cog):
         await ctx.send(random.choice(responses))
         
      #generates random classpect!
-    @bot.command()
+    @commands.command()
     async def classpect(ctx):
         classes = [
         'Lord',
