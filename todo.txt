@@ -1,7 +1,0 @@
-List of important to not important things on the todo list
-
-- Apply a 35 second Cooldown to the !addcan command, and a 45 second cooldown to !hug and !classpect. Actually, maybe just a 35 second cooldown to all commands would be cleaner? 
-- the 'congrats' autoresponse needs adding. {https://tenor.com/view/congratulations-neon-genesis-evangelion-gif-10554579}
-- Moderator only autoresponse also missing 'super' -> 'HOT' 
-
-(thats it for now, more to be added)
