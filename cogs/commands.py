@@ -104,6 +104,10 @@ class BecCommands(commands.Cog):
         self.bot.save_config()
         await ctx.send("You place a can on Planet-Lumi. There's now %d cans.  Someone can add another in 35 seconds." % cancount)
 
+    @commands.command()
+    async def familyfriendly(self, ctx):
+        await ctx.send('https://cozy.galvinism.ink/nff.jpg')
+
     #hugs
     @commands.command(aliases = ['fight', 'Hug'])
     async def hug(self, ctx, arg):
@@ -119,7 +123,15 @@ class BecCommands(commands.Cog):
     @commands.command()
     async def ping(self, ctx):
         await ctx.send("Pong!")
-
+    
+    @commands.command()
+    async def uranium(self, ctx):
+        await ctx.send("Better than !uranus")
+    
+    @commands.command()
+    async def uranus(self, ctx):
+        await ctx.send("Better than !uranium")
+    
     #funny flipcoin
     @commands.command()
     async def flipcoin(self, ctx):
