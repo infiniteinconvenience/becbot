@@ -294,12 +294,12 @@ class BecCommands(commands.Cog):
     #copper
     @commands.command(aliases=['Copper'], pass_context = True)
     async def copper(self, ctx):
-        await ctx.send(self, ctx.message.author.mention + ': Copper is "Cu" on the periodic table. When read it sounds like "see you", a shortened version of the phrase "See you later", which is commonly used as a sendoff to someone.')
+        await ctx.send(ctx.message.author.mention + ': Copper is "Cu" on the periodic table. When read it sounds like "see you", a shortened version of the phrase "See you later", which is commonly used as a sendoff to someone.')
     
     #Honk :o) 
     @commands.command(pass_context = True)
     async def honk(self, ctx):
-        await ctx.send(self, ctx.message.author.mention + ': *honl*')
+        await ctx.send(ctx.message.author.mention + ': *honl*')
 
 
 def setup(bot):
