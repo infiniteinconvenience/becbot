@@ -1,7 +1,7 @@
 # becbot
-Becbot! My first ever coding ANYTHING project
->Written for 3.8.0 but should run in 3.7 
+Becbot! A robot powered by the green sun and steak. 
+>Written in Python 3.7 
 
-> Uses discord.py (rewritten) and pytz libraries! 
+> Uses discord.py (rewritten) and pytz libraries 
 
->Thanks cozy for hosting and making it run right!
+>Thanks cozy for everything!
