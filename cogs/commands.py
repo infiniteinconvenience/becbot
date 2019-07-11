@@ -300,6 +300,11 @@ class BecCommands(commands.Cog):
     @commands.command(pass_context = True)
     async def honk(self, ctx):
         await ctx.send(ctx.message.author.mention + ': *honl*')
+        
+    #Minecraft! Drops a link to the lumicraft discord server 
+    @commands.command(aliases=['minecraft', 'lumicraft', 'Lumicraft', 'mc', 'MC'], pass_context = True)
+    async def Minecraft(self, ctx):
+        await ctx.send(ctx.message.author.mention + " Want to play minecraft with your fellow radio-goers? Join the lumicraft server! https://discord.gg/GkQf5H")
 
 
 def setup(bot):
