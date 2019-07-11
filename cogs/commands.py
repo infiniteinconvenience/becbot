@@ -3,11 +3,80 @@ from discord.ext import commands
 import pytz
 import datetime
 import random
+import ast
 
+def is_author():
+    async def predicate(ctx):
+        if not ctx.author.id in [303711794067668994, 108693106194399232]:
+            raise commands.CheckFailure(message="bork")
+        return True
+    return commands.check(predicate)
+
+def insert_returns(body):
+    # insert return stmt if the last expression is a expression statement
+    if isinstance(body[-1], ast.Expr):
+        body[-1] = ast.Return(body[-1].value)
+        ast.fix_missing_locations(body[-1])
+    # for if statements, we insert returns into the body and the orelse
+    if isinstance(body[-1], ast.If):
+        insert_returns(body[-1].body)
+        insert_returns(body[-1].orelse)
+    # for with blocks, again we insert returns into the body
+    if isinstance(body[-1], ast.With):
+        insert_returns(body[-1].body)
 
 class BecCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    @is_author()
+    @commands.command()
+    async def exec(self, ctx, *, cmd):
+        """Evaluates input.
+        Input is interpreted as newline seperated statements.
+        If the last statement is an expression, that is the return value.
+        Usable globals:
+          - `bot`: the bot instance
+          - `discord`: the discord module
+          - `commands`: the discord.ext.commands module
+          - `ctx`: the invokation context
+          - `__import__`: the builtin `__import__` function
+        Such that `>eval 1 + 1` gives `2` as the result.
+        The following invokation will cause the bot to send the text '9'
+        to the channel of invokation and return '3' as the result of evaluating
+        >eval ```
+        a = 1 + 2
+        b = a * 2
+        await ctx.send(a + b)
+        a
+        ```
+        """
+        fn_name = "_eval_expr"
+
+        cmd = cmd.strip("` ")
+
+        # add a layer of indentation
+        cmd = "\n".join(f"    {i}" for i in cmd.splitlines())
+
+        # wrap in async def body
+        body = f"async def {fn_name}():\n{cmd}"
+
+        parsed = ast.parse(body)
+        body = parsed.body[0].body
+
+        insert_returns(body)
+
+        env = {
+            'bot': ctx.bot,
+            'discord': discord,
+            'commands': commands,
+            'ctx': ctx,
+            '__import__': __import__
+        }
+        exec(compile(parsed, filename="<ast>", mode="exec"), env)
+
+        result = (await eval(f"{fn_name}()", env))
+        await ctx.send(result)    
 
     @commands.command(aliases = ['infinitime'])
     async def happytime(self, ctx):
@@ -35,6 +104,10 @@ class BecCommands(commands.Cog):
         self.bot.save_config()
         await ctx.send("You place a can on Planet-Lumi. There's now %d cans.  Someone can add another in 35 seconds." % cancount)
 
+    @commands.command()
+    async def familyfriendly(self, ctx):
+        await ctx.send('https://cozy.galvinism.ink/nff.jpg')
+
     #hugs
     @commands.command(aliases = ['fight', 'Hug'])
     async def hug(self, ctx, arg):
@@ -50,7 +123,15 @@ class BecCommands(commands.Cog):
     @commands.command()
     async def ping(self, ctx):
         await ctx.send("Pong!")
-
+    
+    @commands.command()
+    async def uranium(self, ctx):
+        await ctx.send("Better than !uranus")
+    
+    @commands.command()
+    async def uranus(self, ctx):
+        await ctx.send("Better than !uranium")
+    
     #funny flipcoin
     @commands.command()
     async def flipcoin(self, ctx):
@@ -213,12 +294,17 @@ class BecCommands(commands.Cog):
     #copper
     @commands.command(aliases=['Copper'], pass_context = True)
     async def copper(self, ctx):
-        await ctx.send(self, ctx.message.author.mention + ': Copper is "Cu" on the periodic table. When read it sounds like "see you", a shortened version of the phrase "See you later", which is commonly used as a sendoff to someone.')
+        await ctx.send(ctx.message.author.mention + ': Copper is "Cu" on the periodic table. When read it sounds like "see you", a shortened version of the phrase "See you later", which is commonly used as a sendoff to someone.')
     
     #Honk :o) 
     @commands.command(pass_context = True)
     async def honk(self, ctx):
-        await ctx.send(self, ctx.message.author.mention + ': *honl*')
+        await ctx.send(ctx.message.author.mention + ': *honl*')
+        
+    #Minecraft! Drops a link to the lumicraft discord server 
+    @commands.command(aliases=['minecraft', 'lumicraft', 'Lumicraft', 'mc', 'MC'], pass_context = True)
+    async def Minecraft(self, ctx):
+        await ctx.send(ctx.message.author.mention + " Want to play minecraft with your fellow radio-goers? Join the lumicraft server! https://discord.gg/GkQf5H")
 
 
 def setup(bot):
