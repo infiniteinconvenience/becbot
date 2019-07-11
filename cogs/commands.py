@@ -304,7 +304,7 @@ class BecCommands(commands.Cog):
     #Minecraft! Drops a link to the lumicraft discord server 
     @commands.command(aliases=['minecraft', 'lumicraft', 'Lumicraft', 'mc', 'MC'], pass_context = True)
     async def Minecraft(self, ctx):
-        await ctx.send(ctx.message.author.mention + " Want to play minecraft with your fellow radio-goers? Join the lumicraft server! https://discord.gg/GkQf5H")
+        await ctx.send(ctx.message.author.mention + " Want to play minecraft with your fellow radio-goers? Join the lumicraft server! https://discord.gg/wWUX8H4")
 
 
 def setup(bot):
