@@ -245,7 +245,7 @@ class BecCommands(commands.Cog):
     #A letter away from RIP in peace
     @commands.command()
     async def rp(self, ctx):
-        await ctx.send("We all know role playing isn't allowed here, so you must be looking for this instead! https://mspfa.com/?s=25171&p=1")
+        await ctx.send("Remember, RP is just one letter away from RIP! Please take it elsewhere.")
 
     #Sorry Zyr.
     @commands.command()
