@@ -281,6 +281,11 @@ class BecCommands(commands.Cog):
     @commands.command()
     async def gh2(self, ctx):
         await ctx.send('https://coolandnewwebcomic.bandcamp.com/album/greatest-hits-2')
+        
+    #PMT
+    @commands.command()
+    async def PMT(self, ctx):
+        await ctx.send('https://pascalpotatovandenbos.bandcamp.com/') 
     
     @commands.command()
     async def quote(self, ctx, arg):
