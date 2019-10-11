@@ -4,4 +4,4 @@ Becbot! A robot powered by the green sun and steak.
 
 > Uses discord.py (rewritten) and pytz libraries 
 
->Thanks cozy for everything!
+>Thanks @CozyGalvinism for helping and hosting!
